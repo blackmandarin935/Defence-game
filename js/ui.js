@@ -2,12 +2,22 @@
 
 class UI {
     constructor() {
+        console.log('UI constructor called');
         this.goldElement = document.getElementById('gold');
         this.livesElement = document.getElementById('lives');
         this.waveElement = document.getElementById('wave');
         this.messageElement = document.getElementById('message');
         this.startWaveButton = document.getElementById('start-wave');
         this.towerOptions = document.querySelectorAll('.tower-option');
+        
+        console.log('UI elements found:', {
+            gold: !!this.goldElement,
+            lives: !!this.livesElement,
+            wave: !!this.waveElement,
+            message: !!this.messageElement,
+            startWave: !!this.startWaveButton,
+            towerOptions: this.towerOptions.length
+        });
         
         this.selectedTowerType = null;
         this.gold = 100;
@@ -18,20 +28,24 @@ class UI {
     }
     
     setupEventListeners() {
+        console.log('Setting up UI event listeners');
         // Tower selection
         this.towerOptions.forEach(option => {
             option.addEventListener('click', () => {
+                console.log('Tower option clicked:', option.dataset.towerType);
                 this.selectTowerType(option.dataset.towerType);
             });
         });
         
         // Start wave button
         this.startWaveButton.addEventListener('click', () => {
+            console.log('Start wave button clicked');
             this.onStartWave();
         });
     }
     
     selectTowerType(type) {
+        console.log('Selecting tower type:', type);
         // Update visual selection
         this.towerOptions.forEach(option => {
             option.classList.remove('selected');
@@ -41,6 +55,9 @@ class UI {
         if (selectedOption) {
             selectedOption.classList.add('selected');
             this.selectedTowerType = type;
+            console.log('Selected tower type set to:', this.selectedTowerType);
+        } else {
+            console.warn('Could not find tower option for type:', type);
         }
     }
     
@@ -50,6 +67,7 @@ class UI {
     
     onStartWave() {
         // This will be called from main.js
+        console.log('onStartWave called');
         if (typeof this.startWaveCallback === 'function') {
             this.startWaveCallback();
         }

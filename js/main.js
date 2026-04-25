@@ -2,14 +2,24 @@
 
 class Game {
     constructor() {
+        console.log('Game constructor called');
+        
         this.canvas = document.getElementById('game-canvas');
+        console.log('Canvas element:', this.canvas);
+        if (!this.canvas) {
+            console.error('CANNOT FIND CANVAS ELEMENT!');
+            return;
+        }
+        
         this.ctx = this.canvas.getContext('2d');
+        console.log('Canvas context obtained');
         
         // Set canvas size to match container
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
         
         this.path = createPath();
+        console.log('Path created:', this.path);
         this.towers = [];
         this.projectiles = [];
         this.waveManager = new WaveManager();
@@ -17,6 +27,7 @@ class Game {
         
         // Audio
         this.bgm = document.getElementById('bgm');
+        console.log('BGM element:', this.bgm);
         this.bgm.volume = 0.5; // Set volume to 50%
         
         this.lastTime = 0;
@@ -24,8 +35,17 @@ class Game {
         this.lives = 20;
         
         // Bind events
+        console.log('Setting up event listeners');
         this.ui.setStartWaveCallback(() => this.startNextWave());
-        this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+        this.canvas.addEventListener('click', (e) => {
+            console.log('Canvas clicked!', e);
+            this.handleCanvasClick(e);
+        });
+        
+        // Also test direct click on document
+        document.addEventListener('click', (e) => {
+            console.log('Document clicked:', e.target.tagName, e.target.id);
+        });
         
         // Start first wave
         this.startNextWave();
