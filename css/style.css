@@ -37,6 +37,35 @@ body {
     padding: 10px;
     color: white;
     text-shadow: 1px 1px 2px black;
+    /* Allow clicks to pass through to elements underneath */
+    pointer-events: none;
+}
+
+/* But allow pointer events on actual UI elements */
+#tower-menu,
+#start-wave,
+.tower-option,
+#message {
+    pointer-events: all;
+}
+
+/* Make canvas clickable for placing towers - use !important to override any potential conflicts */
+#game-canvas {
+    pointer-events: all !important;
+    cursor: crosshair !important;
+}
+
+/* Ensure the container doesn't block events */
+#game-container {
+    pointer-events: all;
+}
+
+/* But allow pointer events on actual UI elements */
+#tower-menu,
+#start-wave,
+.tower-option,
+#message {
+    pointer-events: all;
 }
 
 #game-info {
