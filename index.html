@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디펜스 게임</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="ui-overlay">
+            <div id="game-info">
+                <div>골드: <span id="gold">100</span></div>
+                <div>생명: <span id="lives">20</span></div>
+                <div>웨이브: <span id="wave">0</span></div>
+            </div>
+            <div id="tower-menu">
+                <h3>타워 선택</h3>
+                <div class="tower-option" data-tower-type="basic">
+                    기본 타워<br>Cost: 50
+                </div>
+                <div class="tower-option" data-tower-type="slow">
+                    느림 타워<br>Cost: 75
+                </div>
+                <div class="tower-option" data-tower-type="splash">
+                    스플래시 타워<br>Cost: 100
+                </div>
+            </div>
+            <button id="start-wave">다음 웨이브 시작</button>
+            <div id="message"></div>
+        </div>
+    </div>
+    <!-- Background music -->
+    <audio id="bgm" loop>
+        <!-- Replace the src with your own background music file -->
+        <source src="assets/bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="js/entities.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
