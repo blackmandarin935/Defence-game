@@ -1,9 +1,5 @@
 // Main game file - initializes and runs the game
 
-import { Vector, Tower, Enemy, Projectile, createPath } from './entities.js';
-import { WaveManager } from './waves.js';
-import { UI } from './ui.js';
-
 class Game {
     constructor() {
         this.canvas = document.getElementById('game-canvas');

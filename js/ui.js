@@ -90,4 +90,5 @@ class UI {
     }
 }
 
-export { UI };
+// Attach to window
+window.UI = UI;
